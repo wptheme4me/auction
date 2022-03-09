@@ -20,13 +20,14 @@ class AuctionListing(models.Model):
     date = models.DateTimeField()
     startBid = models.DecimalField(decimal_places=2, max_digits=7)
     description = models.CharField(max_length=250)
+    serialNumber = models.CharField(max_length=20)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     imageUrl = models.URLField(blank=True)
     active = models.BooleanField()
 
     def __str__(self):
-        return f"{self.id} : {self.name} in {self.category.name}\nPosted at : {self.date}\nValue : {self.startBid}\nDescription : {self.description}\nPosted By : {self.user.username} Active Status: {self.active}"
-
+        # return f"{self.id} : {self.name} in {self.category.name}\nPosted at : {self.date}\nValue : {self.startBid}\nDescription : {self.description}\nPosted By : {self.user.username} Active Status: {self.active}"
+        return f"{self.serialNumber} : {self.name} {self.category.name}"
 
 class Bid(models.Model):
     date = models.DateTimeField()
@@ -36,7 +37,7 @@ class Bid(models.Model):
         AuctionListing, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.id} : {self.user.username} bid {self.bidValue} on {self.auctionListing.name} at {self.date}"
+        return f"{self.id} : {self.user.username} bid {self.bidValue} on {self.auctionListing.name} {self.auctionListing.serialNumber} at {self.date}"
 
 
 class Comment(models.Model):

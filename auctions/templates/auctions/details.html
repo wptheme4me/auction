@@ -5,8 +5,9 @@
 {% endblock %}
 
 {% block body %}
+
 <div class="container detail-page">
-    <h4 class="mb-3">Listing: <span class="title">{{ item.name }}</span></h4>
+    <h4 class="mb-3">Listing: <span class="title">{{ item.name }} {{ item.serialNumber }} </span></h4>
     <div class="image">
         <img class="big" src="{{ item.imageUrl }}" alt="{{ item.id }}">
     </div>
@@ -17,8 +18,8 @@
         Start Bid : <strong>${{ item.startBid }}</strong>
     </div>
     {% for bid in bids %}
-    <div class="text-center">{{ bid.user.username }} bid <strong>{{ bid.bidValue }}</strong> at
-        {{ bid.date|date:'M d, h:i a' }}</div>
+    <div class="text-center"><h1>{{ bid.user.username }} bid <strong>{{ bid.bidValue }}</strong> at
+        {{ bid.date|date:'M d, h:i a' }}</h1></div>
     {% empty %}
     <div class="alert alert-warning text-center">
         No Bids Yet!
@@ -48,7 +49,7 @@
         <form action="{% url 'bid' item.id %}" method="post">
             {% csrf_token %}
             <div class="form-group">
-                <input type="number" name="bid" class="form-control" placeholder="Bid" step=".01">
+                <input type="number" name="bid" class="form-control" placeholder="Bid" step="1">
             </div>
             <div class="row justify-content-around">
                 <button class="btn btn-primary" type="submit">Place Bid</button>
@@ -62,14 +63,14 @@
         {% endif %}
     </section>
 
-    <section>
+    <!-- <section>
         Details:
         <ul>
             <li>Listed By: <strong>{{ item.user.username }}</strong></li>
             <li>Category: <strong>{{ item.category.name }}</strong></li>
             <li>Listed On: <strong>{{ item.date }}</strong></li>
         </ul>
-    </section>
+    </section> -->
 
     <section>
         Comments:

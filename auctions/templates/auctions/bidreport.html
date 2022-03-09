@@ -1,0 +1,25 @@
+{% extends 'auctions/layout.html'%}
+
+{% block title %}
+{{ item.name }}
+{% endblock %}
+
+{% block body %}
+
+    {% for item in items %}
+    <p>{{ item }} </p>
+    {% empty %}
+    <div class="alert alert-warning text-center">
+        Nieko nėra
+    </div>
+    {% endfor %}
+
+    {% for rezult in rezultatas %}
+    <p>{{ rezult }} </p>
+    {% empty %}
+    <div class="alert alert-warning text-center">
+        Nieko nėra
+    </div>
+    {% endfor %}
+
+{% endblock %}

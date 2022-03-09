@@ -1,0 +1,13 @@
+#json formatavimas visual studijo
+Ctrl+A, Ctrl+K+F
+
+
+#ismete visas komandas galimas sioje programoje
+C:\tmp\auction>py manage.py
+
+#palistino visos db turini
+C:\tmp\auction>py manage.py dumpdata >> rezultatas.txt
+
+
+#kuriam admina
+https://docs.djangoproject.com/en/1.8/intro/tutorial02/

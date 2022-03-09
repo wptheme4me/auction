@@ -113,6 +113,25 @@ def details(request, id):
         'bid': bid
     })
 
+# Darom raportą
+def bidreport(request):
+    items = AuctionListing.objects.all()
+    rezultatas = []
+    for item in items:
+        bids = Bid.objects.filter(auctionListing=item)
+        value = bids.aggregate(Max('bidValue'))['bidValue__max']
+        bid = None
+        if value is not None:
+            bid = Bid.objects.filter(bidValue=value)[0]
+        else:
+            bid =  item
+        rezultatas.append(bid)
+    return render(request, "auctions/bidreport.html", {
+        'items': items,
+        'rezultatas': rezultatas
+    })
+
+#
 
 def categories(request):
     if request.method == 'POST':

@@ -5,6 +5,8 @@
 
 <div class="items-list">
     {% for obj in objects %}
+    <!-- {{ obj }}} -->
+    {{ bids }}
     <a href="{% url 'details' obj.id %}">
         <div class="item text-center" {% if obj.active != True %}style="background-color: rgba(255, 220, 220, 0.7);"
             {% endif %}>
