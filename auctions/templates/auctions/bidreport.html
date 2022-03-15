@@ -6,6 +6,8 @@
 
 {% block body %}
 
+{{ rezultatas }}
+
     {% for item in items %}
     <p>{{ item }} </p>
     {% empty %}
@@ -13,7 +15,7 @@
         Nieko nėra
     </div>
     {% endfor %}
-
+<p>****************</p>
     {% for rezult in rezultatas %}
     <p>{{ rezult }} </p>
     {% empty %}

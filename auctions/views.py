@@ -119,12 +119,14 @@ def bidreport(request):
     rezultatas = []
     for item in items:
         bids = Bid.objects.filter(auctionListing=item)
+        # return f"{self.id} : {self.user.username} bid {self.bidValue} on {self.auctionListing.name} {self.auctionListing.serialNumber} at {self.date}"
         value = bids.aggregate(Max('bidValue'))['bidValue__max']
         bid = None
         if value is not None:
             bid = Bid.objects.filter(bidValue=value)[0]
         else:
-            bid =  item
+            new_item = 'Neliestas ' + str(item)
+            bid = new_item
         rezultatas.append(bid)
     return render(request, "auctions/bidreport.html", {
         'items': items,

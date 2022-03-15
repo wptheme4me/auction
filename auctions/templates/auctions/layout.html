@@ -16,7 +16,7 @@
 <body>
     <nav class="navbar sticky-top navbar-expand-lg py-3 navbar-light p-3">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'all' %}">Auctions</a>
+            <a class="navbar-brand" href="{% url 'all' %}"> <img src="{% static 'img/logo.svg' %}"> </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -67,11 +67,15 @@
             </div>
         </div>
     </nav>
-    <hr>
+
     <div class="container container-body">
         {% block body %}
         {% endblock %}
     </div>
+    <footer>
+        <div>bla bla</div>
+        
+    </footer>
 </body>
 
 </html>

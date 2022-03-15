@@ -105,6 +105,7 @@ img {
     grid-gap: 25px;
 }
 
+
 @media only screen and (max-width: 490px) {
     .items-list {
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -112,12 +113,11 @@ img {
 }
 
 .item {
-    background: rgba(255, 228, 181, 0.68);
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
-    border-radius: 1rem;
+    background-color: #fed630;
     padding: 20px;
     display: grid;
     grid-template-rows: 2.5fr 1fr;
+    border-bottom-right-radius: 200px;
 }
 
 .item img {
@@ -129,6 +129,7 @@ img {
 
 .navbar {
     backdrop-filter: blur(10px);
+    background-color: white;
 }
 
 .badge {
@@ -137,7 +138,8 @@ img {
 }
 
 .status--active {
-    background: rgba(190, 255, 92, 0.8);
+    background: #195236;
+    color: white;
 }
 
 .status--inactive {
@@ -145,7 +147,8 @@ img {
 }
 
 .status--watching {
-    background: rgba(172, 128, 255, 0.281);
+    background: #abd2e5;
+    color: white;
 }
 
 .status--notwatching {
@@ -157,11 +160,10 @@ img {
 }
 
 body {
-    background-image: url("/static/img/bg.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: initial;
-    background-attachment: fixed;
+    line-height: 1.5;
+    /* font-family: "TTHoves", sans-serif; */
+    color: #000;
+    background-color: #efeff4;
 }
 
 .inout {
@@ -203,4 +205,13 @@ body {
 
 * {
     font-family: 'Baloo Da 2', cursive;
+}
+
+footer {
+    background-color: white;
+    padding: 16px;
+}
+
+footer div {
+    margin: 0 114px;
 }
