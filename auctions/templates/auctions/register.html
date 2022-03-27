@@ -9,26 +9,26 @@
 
     <div class="card inout">
         <div class="card-body m-4">
-            <h2 class="card-title">Register</h2>
+            <h2 class="card-title">Registruokis</h2>
 
             <form action="{% url 'register' %}" method="post" class="card-text mb-3">
                 {% csrf_token %}
                 <div class="form-group">
-                    <input class="form-control" autofocus type="text" name="username" placeholder="Username">
+                    <input class="form-control" autofocus type="text" name="username" placeholder="Vartotojas">
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="email" name="email" placeholder="Email Address">
+                    <input class="form-control" type="email" name="email" placeholder="El.pašto adresas">
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="password" name="password" placeholder="Password">
+                    <input class="form-control" type="password" name="password" placeholder="Slaptažodis">
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password">
+                    <input class="form-control" type="password" name="confirmation" placeholder="Pakartoti slaptažodį">
                 </div>
-                <input class="gradient-button register" type="submit" value="Register">
+                <input class="gradient-button register" type="submit" value="Registruotis">
             </form>
 
-            Already have an account? <a href="{% url 'login' %}">Log In here.</a>
+            Registruotas vartotojas? <a href="{% url 'login' %}">Prisijungti.</a>
         </div>
     </div>
 

@@ -10,20 +10,20 @@
 
     <div class="card inout">
         <div class="card-body m-4">
-            <h2 class="card-title">Login</h2>
+            <h2 class="card-title">Prisijungti</h2>
 
             <form action="{% url 'login' %}" method="post" class="card-text mb-3">
                 {% csrf_token %}
                 <div class="form-group">
-                    <input autofocus class="form-control" type="text" name="username" placeholder="Username">
+                    <input autofocus class="form-control" type="text" name="username" placeholder="Vartotojas">
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="password" name="password" placeholder="Password">
+                    <input class="form-control" type="password" name="password" placeholder="Slaptažodis">
                 </div>
-                <input class="gradient-button login" type="submit" value="Login">
+                <input class="gradient-button login" type="submit" value="Prisijungti">
             </form>
 
-            Don't have an account? <a href="{% url 'register' %}"><strong>Register here.</strong></a>
+            Naujas vartotojas? <a href="{% url 'register' %}"><strong>Registruokis</strong></a>
         </div>
     </div>
 

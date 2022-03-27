@@ -49,12 +49,8 @@ img {
     outline: none;
 }
 
-.register {
-    background-image: linear-gradient(to right, #DD5E89 0%, #F7BB97 51%, #DD5E89 100%);
-}
-
-.login {
-    background-image: linear-gradient(to right, #00d2ff 0%, #3a7bd5 51%, #00d2ff 100%);
+.login, .register {
+    background-color: #fed630;
 }
 
 
@@ -167,7 +163,7 @@ body {
 }
 
 .inout {
-    background-color: rgba(247, 255, 224, 0.507);
+    background-color: #abd2e5;
     backdrop-filter: blur(10px);
 }
 
