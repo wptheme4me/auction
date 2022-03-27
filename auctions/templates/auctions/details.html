@@ -7,7 +7,7 @@
 {% block body %}
 
 <div class="container detail-page">
-    <h4 class="mb-3">Listing: <span class="title">{{ item.name }} {{ item.serialNumber }} </span></h4>
+    <h4 class="mb-3">Prekė <span class="title">{{ item.name }} {{ item.serialNumber }} </span></h4>
     <div class="image">
         <img class="big" src="{{ item.imageUrl }}" alt="{{ item.id }}">
     </div>
@@ -15,14 +15,13 @@
         {{ item.description }}
     </div>
     <div class="bid">
-        Start Bid : <strong>${{ item.startBid }}</strong>
+        Pradinė kaina : <strong>{{ item.startBid }}€</strong>
     </div>
     {% for bid in bids %}
-    <div class="text-center"><h1>{{ bid.user.username }} bid <strong>{{ bid.bidValue }}</strong> at
-        {{ bid.date|date:'M d, h:i a' }}</h1></div>
+    <div>{{ bid.date|date:'Y.m.d, H:i' }} &emsp; <strong> {{ bid.user.username }} </strong> pakėlė kainą iki <strong>{{ bid.bidValue }}€</strong></div>
     {% empty %}
     <div class="alert alert-warning text-center">
-        No Bids Yet!
+        Nėra statymų!
     </div>
     {% endfor %}
 
@@ -37,9 +36,9 @@
 
         <div class="alert alert-dark text-center">
             {% if bid.user.username == user.username %}
-            You Won The Auction!
+            Tu nupirkai šią prekę!
             {% else %}
-            <strong>{{ bid.user.username }}</strong> won, with a bid of <strong>${{ bid.bidValue }}</strong>
+            <strong>{{ bid.user.username }}</strong> nupirko prekę už <strong>{{ bid.bidValue }}€</strong>
             {% endif %}
         </div>
 
@@ -49,10 +48,10 @@
         <form action="{% url 'bid' item.id %}" method="post">
             {% csrf_token %}
             <div class="form-group">
-                <input type="number" name="bid" class="form-control" placeholder="Bid" step="1">
+                <input type="number" name="bid" class="form-control" placeholder="Įrašyk savo kainą. Turi būti didesnė nei paskutinis statymas" step="1">
             </div>
             <div class="row justify-content-around">
-                <button class="btn btn-primary" type="submit">Place Bid</button>
+                <button class="btn btn-primary" type="submit">Mano statymas</button>
                 {% if item.user.username == user.username %}
                 <a href="{% url 'end' item.id %}">
                     <button class="btn btn-warning" type="button">End Auction</button>
@@ -63,17 +62,8 @@
         {% endif %}
     </section>
 
-    <!-- <section>
-        Details:
-        <ul>
-            <li>Listed By: <strong>{{ item.user.username }}</strong></li>
-            <li>Category: <strong>{{ item.category.name }}</strong></li>
-            <li>Listed On: <strong>{{ item.date }}</strong></li>
-        </ul>
-    </section> -->
-
     <section>
-        Comments:
+        Komentarai:
         {% for comment in comments %}
         <div class="card comment">
             <div class="card-body">
@@ -81,13 +71,13 @@
                     <strong>{{ comment.user.username }}</strong>: {{ comment.commentValue }}
                 </div>
                 <div class="card-text">
-                    <small>Commented on: <strong>{{ comment.date|date:'M d, h:i a' }}</strong></small>
+                    <small><strong>{{ comment.date|date:'M d, h:i a' }}</strong></small>
                 </div>
             </div>
         </div>
         {% empty %}
         <div class="alert alert-info mt-2">
-            No Comments Yet
+            Komentarų nėra
         </div>
         {% endfor %}
 
@@ -95,9 +85,9 @@
         <form action="{% url 'comment' item.id %}" method="post">
             {% csrf_token %}
             <div class="form-group">
-                <textarea name="content" rows="4" class="form-control" placeholder="Enter a comment"></textarea>
+                <textarea name="content" rows="4" class="form-control" placeholder="Rašyti komentarą"></textarea>
             </div>
-            <button class="btn btn-dark py-2 px-4" type="submit">Comment</button>
+            <button class="btn btn-dark py-2 px-4" type="submit">Komentuoti</button>
         </form>
 
         <form action="{% url 'watchlist' %}" method="post" class="add-category">
@@ -105,7 +95,7 @@
             <input type="hidden" name="item" value="{{ item.id }}">
             <input type="hidden" value="{% if item in user.watchlist.all %}0{% else %}1{% endif %}" name="status">
             <button class="gradient-button watchlist" type="submit">
-                {% if item in user.watchlist.all %}Remove from{% else %}Add to{% endif %} Watchlist
+                {% if item in user.watchlist.all %}Nebestebėti{% else %}Stebėti{% endif %}
             </button>
         </form>
         {% endif %}

@@ -3,6 +3,13 @@
 {% block body %}
 <h2 class="py-3 m-3">Aukcione parduodamos prekės</h2>
 
+<div class="grid-container text-center kategorijos">
+    <a href="/filter/nešiojami kompiuteriai">Nešiojami kompiuteriai</a>
+    <a href="/filter/mobilūs telefonai">Mobilūs telefonai</a>
+    <a href="/filter/kita">Kita</a>
+    <a href="/">Visos</a>
+</div>
+
 <div class="items-list">
     {% for obj in objects %}
     <!-- {{ obj }}} -->
@@ -13,17 +20,16 @@
             <img src="{{ obj.imageUrl }}" alt="Loading...">
             <div class="details">
                 <h5>{{ obj.name }}</h5>
-                <h6>Price: $<strong>{{ obj.startBid }}</strong></h6>
-                <small>Created: <strong>{{ obj.date|date:"d-m-Y" }}</strong></small><br>
+                <h6>Pradinė kaina: $<strong>{{ obj.startBid }}</strong></h6>
                 {% if obj.active %}
-                <span class="badge status--active">Active</span>
+                <span class="badge status--active">Parduodama</span>
                 {% else %}
-                <span class="badge status--inactive">Ended</span>
+                <span class="badge status--inactive">Neparduodama</span>
                 {% endif %}
                 {% if obj in user.watchlist.all %}
-                <span class="badge status--watching">Watching</span>
+                <span class="badge status--watching">Stebėti</span>
                 {% else %}
-                <span class="badge status--notwatching">Not Watching</span>
+                <span class="badge status--notwatching">Nebestebėti</span>
                 {% endif %}
             </div>
         </div>

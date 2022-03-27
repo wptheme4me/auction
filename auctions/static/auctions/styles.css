@@ -95,7 +95,7 @@ img {
 }
 
 .watchlist {
-    background-image: linear-gradient(to right, #98FB98 0%, #FDF0AA 51%, #98FB98 100%);
+    /* background-image: linear-gradient(to right, #98FB98 0%, #FDF0AA 51%, #98FB98 100%); */
     color: rgba(0, 0, 0, 0.801);
 }
 
@@ -123,7 +123,7 @@ img {
 .item img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: scale-down;
     border-radius: 1rem;
 }
 
@@ -173,7 +173,7 @@ body {
 
 .detail-page {
     padding: 3rem;
-    background-color: #cfd0d4e0;
+    background-color: #abd2e5;
     border-radius: 1rem;
 }
 
@@ -185,7 +185,8 @@ body {
 .big {
     width: 100%;
     min-height: 100%;
-    object-fit: cover;
+    object-fit: scale-down;
+    /* object-fit: cover; */
 }
 
 .image {
@@ -214,4 +215,8 @@ footer {
 
 footer div {
     margin: 0 114px;
+}
+
+.kategorijos {
+    padding-bottom: 20px;
 }
